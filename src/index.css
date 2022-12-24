@@ -1,0 +1,44 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 22px;
+  min-height: 100vh;
+  font-family:'Roboto', 'Oxygen', 'Ubuntu',sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+form {
+  width: 100%;
+  position: fixed;
+}
+
+button {
+  width: 33.33%;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+button:hover{
+  background-color: rgb(137, 137, 137);
+  color: white;
+}
+
+button:focus {
+  background-color: black;
+  color: white;
+}
+
+ul {
+  padding: 3rem 2rem 1rem;
+  /* margin-top: 1rem;
+  padding: 0 2rem 1rem; */
+}
+
+li {
+  margin-bottom: 1rem;
+}
