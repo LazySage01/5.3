@@ -1,5 +1,6 @@
 import Button from "./Button";
-import List from "./List";
+import Table from "./Table";
+// import List from "./List";
 import { useState, useEffect } from "react";
 
 
@@ -30,7 +31,10 @@ function App() {
       <Button 
         setReqType={setReqType} 
       />
-      <List items={items} />
+      <Table 
+        items={items}
+      />
+      {/* <List items={items} /> */}
     </div>
   );
 }
