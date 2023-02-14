@@ -1,28 +1,29 @@
-import React from 'react'
+import React from "react";
+import { Form, NavLink, Outlet } from "react-router-dom";
 
-const Button = ({setReqType}) => {
+const Button = ({ setReqType }) => {
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
-        <button 
-          type='button'
-          onClick={() => setReqType('users')} 
-        > 
+    <div>
+      <nav>
+        <NavLink to={"table"}> Table </NavLink>
+        <NavLink to={"list"}> List </NavLink>
+      </nav>
+      <Form>
+        <button type="button" onClick={() => setReqType("users")}>
           Users
         </button>
-        <button 
-          type='button'
-          onClick={() => setReqType('posts')} 
-        >
+        <button type="button" onClick={() => setReqType("posts")}>
           Posts
         </button>
-        <button 
-          type='button'
-          onClick={() => setReqType('comments')} 
-        > 
+        <button type="button" onClick={() => setReqType("comments")}>
           Comments
         </button>
-    </form>
-  )
-} 
+      </Form>
+      <div>
+        <Outlet />
+      </div>
+    </div>
+  );
+};
 
 export default Button;
