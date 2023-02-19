@@ -1,18 +1,17 @@
 import { useState, useEffect } from "react";
+import Header from "./Header";
+import Table from "./Table";
+import axios from "axios";
 import {
   createBrowserRouter,
-  createRoutesFromElements,
+  routerProvider,
   Route,
-  RouterProvider,
+  createRoutesFromElements,
 } from "react-router-dom";
-import Button from "./Button";
-import Table from "./Table";
-import AddForm from "./AddForm";
-// import EditForm from "./EditForm";
-import axios from "axios";
 
 function App() {
   const [users, setUsers] = useState([]);
+  // const [dummy, setDummy] = useState([]);
 
   //? GET data
   useEffect(() => {
@@ -21,6 +20,9 @@ function App() {
         const response = await axios.get("http://localhost:3500/users");
         const users = response.data;
         if (response && response.data) setUsers(users);
+        // const dummyResponse = await axios.get("http://localhost:3500/dummy");
+        // const dummy = dummyResponse.data;
+        // setDummy(dummy);
       } catch (err) {
         console.log(err);
         throw new Error(err.message);
@@ -52,7 +54,6 @@ function App() {
   // DELETE data
   const deleteUser = async (id) => {
     try {
-      console.log(id);
       await axios.delete("http://localhost:3500/users/" + id);
       const updatedUsers = users.filter((user) => user.id !== id);
       setUsers(updatedUsers);
@@ -64,25 +65,18 @@ function App() {
   // PATCH data
   const editUser = async (id) => {};
 
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route errorElement={<p>Error</p>}>
-        <Route path="/" element={<Button />}>
-          <Route
-            path="users"
-            element={<Table users={users} deleteUser={deleteUser} />}
-          />
-          <Route
-            path="addForm"
-            element={<AddForm postUser={postUser} users={users} />}
-          />
-          {/* <Route path="editForm" element={<EditForm editUser={editUser} />} /> */}
-        </Route>
-      </Route>
-    )
+  return (
+    <main>
+      <Header />
+      <Table
+        users={users}
+        editUser={editUser}
+        deleteUser={deleteUser}
+        postUser={postUser}
+        // dummy={dummy}
+      />
+    </main>
   );
-
-  return <RouterProvider router={router} />;
 }
 
 export default App;

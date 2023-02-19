@@ -11,70 +11,95 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-nav {
+.nav {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
-  position: fixed;
-}
-
-nav a {
-  flex-grow: 1;
-  height: 3.5rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
+  margin-top: 0;
+  padding: 0 1rem;
+  background-color: white;
 }
 
 .table_container {
   max-width: 100%;
   overflow-y: auto;
-  padding: 0.5rem;
+  padding: 0 1rem;
 }
-
-/* td {
-  padding: 1rem;
-} */
 
 .addForm {
   padding: 0rem 1rem;
   /* margin-top: 3rem; */
 }
 
-.h1 {
+.nav__h1 {
   margin-bottom: 0rem;
+}
+
+.add__btn {
+  width: 100%;
 }
 
 .outlet {
   margin-top: 3rem;
 }
 
-.nav {
-  margin-top: 0;
-  background-color: white;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-}
-
 .table__btn {
   padding: 0.2rem 0.2rem;
+  border-radius: 0;
+}
+
+.delete__btn {
+  background-color: red;
+  color: white;
+}
+
+.add__btn {
+  background-color: green;
+  color: white;
 }
 
 #table__input {
-  padding: 0.2rem 0.2rem;
-  font-size: small;
+  padding: 0rem 0rem;
+  font-size: 0.7rem;
   height: fit-content;
-  width: min-content;
+  width: fit-content;
+  margin-bottom: 0;
+  border: none;
+  border-radius: 0;
+}
+
+#table__input:disabled {
+  background-color: white;
+  color: black;
+  opacity: 100%;
 }
 
 .table__head th {
-  text-align: center;
-  font-size: small;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding-left: 0rem;
+}
+
+.table__head:first-child {
+  width: min-content;
+}
+
+#table__row {
+  line-height: 1rem;
+}
+
+#table__row td {
+  padding: 0 0;
+  line-height: 12px;
+}
+
+#table__body tr td:first-child input {
+  width: 2rem;
+}
+
+#table__id {
+  width: 1rem;
 }
