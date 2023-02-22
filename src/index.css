@@ -18,19 +18,50 @@ body {
   justify-content: space-between;
   width: 100%;
   margin-top: 0;
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
   background-color: white;
+}
+
+.nav__h1 {
+  font-size: 52px;
+}
+
+.body {
+  padding: 1rem 4rem;
+}
+
+.home {
+  padding: 3rem 6rem;
+}
+
+.home__h1 {
+  margin-bottom: 1rem;
+}
+
+.home__ul {
+  padding: 0 1rem;
+  padding-bottom: 2rem;
+  border-left: 2px solid hsl(195deg, 85%, 41%);
+}
+
+.home__li {
+  list-style: none;
+  border-bottom: 2px solid;
+  padding: 0.5rem;
+}
+.home__li:hover {
+  border-bottom: 2px solid hsl(195deg, 85%, 41%);
+  background-color: rgba(31, 140, 173, 0.353);
+  color: white;
+}
+
+.home__link:hover {
+  text-decoration: none;
 }
 
 .table_container {
   max-width: 100%;
   overflow-y: auto;
-  padding: 0 1rem;
-}
-
-.addForm {
-  padding: 0rem 1rem;
-  /* margin-top: 3rem; */
 }
 
 .nav__h1 {
@@ -87,11 +118,11 @@ body {
   width: min-content;
 }
 
-#table__row {
+#table__body tr {
   line-height: 1rem;
 }
 
-#table__row td {
+#table__body tr td {
   padding: 0 0;
   line-height: 12px;
 }
@@ -100,6 +131,44 @@ body {
   width: 2rem;
 }
 
-#table__id {
+.posts .body #table__input {
+  width: 44rem;
+}
+.comments .body #table__input {
+  width: 36rem;
+}
+
+.posts .title #table__input {
+  width: 10rem;
+}
+.comments .name #table__input,
+.comments .email #table__input {
+  width: 8rem;
+}
+
+.id #table__input,
+.postId #table__input {
+  width: 2rem;
+}
+
+.table__head:first-child {
   width: 1rem;
+}
+
+.none {
+  display: none;
+}
+
+.nav__btn__container {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav__btn__container a {
+  margin-right: 0.5rem;
+}
+
+.plus__btn {
+  padding: 0.5rem 0.75rem;
+  /* border-radius: 50; */
 }
