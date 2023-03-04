@@ -1,15 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import "./pico.classless.css";
+import "./css/index.css";
+import "./css/pico.classless.css";
 import App from "./App";
-import { UserProvider } from "./context/userContext";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      networkMode: "always",
+    },
+    mutations: {
+      networkMode: "always",
+    },
+  },
+});
+
 root.render(
   <React.StrictMode>
-    <UserProvider>
+    <QueryClientProvider client={queryClient}>
       <App />
-    </UserProvider>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   </React.StrictMode>
 );

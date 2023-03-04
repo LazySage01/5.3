@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import UserContext from "./context/userContext";
+import UserContext from "../context/userContext";
 import { useContext } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const EditForm = () => {
   const {
     data,
-    keys,
     editUser,
     // editUserData,
     name,
@@ -27,12 +27,11 @@ const EditForm = () => {
   const { id } = useParams();
 
   const user = data.find((user) => user.id.toString() === id);
-  console.log("user found");
+  const keys = Object.keys(user);
 
   useEffect(() => {
     if (user) {
       try {
-        console.log("user updating...");
         setName(user.name);
         setUsername(user.username);
         setEmail(user.email);
@@ -55,10 +54,16 @@ const EditForm = () => {
     setCompany,
   ]);
 
+  const queryClient = useQueryClient();
+  const handleEdit = useMutation({
+    mutationFn: () => editUser(id),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["users"] }),
+  });
+
   return (
-    <form className="table_container" onSubmit={() => editUser(id)}>
+    <form className="table_container" onSubmit={() => handleEdit(id)}>
       <table>
-        <thead>
+        <thead className="table__head">
           <tr>
             {keys.map((key) => (
               <th key={key}>{key}</th>
@@ -158,7 +163,7 @@ const EditForm = () => {
                 <button
                   type="button"
                   className="table__btn add__btn"
-                  onClick={() => editUser(id)}
+                  onClick={() => handleEdit.mutate(id)}
                 >
                   Update
                 </button>

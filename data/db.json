@@ -1,9 +1,4 @@
 {
-  "tableList": [
-    "users",
-    "posts",
-    "comments"
-  ],
   "users": [
     {
       "id": 1,
@@ -113,7 +108,7 @@
       "city": "room 374, taj plza",
       "phone": "676655454576",
       "website": "www.afthab.com",
-      "company": "ioioiio"
+      "company": "ioioio"
     }
   ],
   "posts": [
@@ -1418,83 +1413,6 @@
       "name": "et sint quia dolor et est ea nulla cum",
       "email": "Leone_Fay@orrin.com",
       "body": "architecto dolorem ab explicabo et provident et\net eos illo omnis mollitia ex aliquam\natque ut ipsum nulla nihil\nquis voluptas aut debitis facilis"
-    },
-    {
-      "postId": 21,
-      "id": 101,
-      "name": "perspiciatis magnam ut eum autem similique explicabo expedita",
-      "email": "Lura@rod.tv",
-      "body": "ut aut maxime officia sed aliquam et magni autem\nveniam repudiandae nostrum odio enim eum optio aut\nomnis illo quasi quibusdam inventore explicabo\nreprehenderit dolor saepe possimus molestiae"
-    },
-    {
-      "postId": 21,
-      "id": 102,
-      "name": "officia ullam ut neque earum ipsa et fuga",
-      "email": "Lottie.Zieme@ruben.us",
-      "body": "aut dolorem quos ut non\naliquam unde iure minima quod ullam qui\nfugiat molestiae tempora voluptate vel labore\nsaepe animi et vitae numquam ipsa"
-    },
-    {
-      "postId": 21,
-      "id": 103,
-      "name": "ipsum a ut",
-      "email": "Winona_Price@jevon.me",
-      "body": "totam eum fugiat repellendus\nquae beatae explicabo excepturi iusto et\nrepellat alias iure voluptates consequatur sequi minus\nsed maxime unde"
-    },
-    {
-      "postId": 21,
-      "id": 104,
-      "name": "a assumenda totam",
-      "email": "Gabriel@oceane.biz",
-      "body": "qui aperiam labore animi magnam odit est\nut autem eaque ea magni quas voluptatem\ndoloribus vel voluptatem nostrum ut debitis enim quaerat\nut esse eveniet aut"
-    },
-    {
-      "postId": 21,
-      "id": 105,
-      "name": "voluptatem repellat est",
-      "email": "Adolph.Ondricka@mozell.co.uk",
-      "body": "ut rerum illum error at inventore ab nobis molestiae\nipsa architecto temporibus non aliquam aspernatur omnis quidem aliquid\nconsequatur non et expedita cumque voluptates ipsam quia\nblanditiis libero itaque sed iusto at"
-    },
-    {
-      "postId": 22,
-      "id": 106,
-      "name": "maiores placeat facere quam pariatur",
-      "email": "Allen@richard.biz",
-      "body": "dolores debitis voluptatem ab hic\nmagnam alias qui est sunt\net porro velit et repellendus occaecati est\nsequi quia odio deleniti illum"
-    },
-    {
-      "postId": 22,
-      "id": 107,
-      "name": "in ipsam vel id impedit possimus eos voluptate",
-      "email": "Nicholaus@mikayla.ca",
-      "body": "eveniet fugit qui\nporro eaque dolores eos adipisci dolores ut\nfugit perferendis pariatur\nnumquam et repellat occaecati atque ipsum neque"
-    },
-    {
-      "postId": 22,
-      "id": 108,
-      "name": "ut veritatis corporis placeat suscipit consequatur quaerat",
-      "email": "Kayla@susanna.org",
-      "body": "at a vel sequi nostrum\nharum nam nihil\ncumque aut in dolore rerum ipsa hic ratione\nrerum cum ratione provident labore ad quisquam repellendus a"
-    },
-    {
-      "postId": 22,
-      "id": 109,
-      "name": "eveniet ut similique accusantium qui dignissimos",
-      "email": "Gideon@amina.name",
-      "body": "aliquid qui dolorem deserunt aperiam natus corporis eligendi neque\nat et sunt aut qui\nillum repellat qui excepturi laborum facilis aut omnis consequatur\net aut optio ipsa nisi enim"
-    },
-    {
-      "postId": 22,
-      "id": 110,
-      "name": "sint est odit officiis similique aut corrupti quas autem",
-      "email": "Cassidy@maribel.io",
-      "body": "cum sequi in eligendi id eaque\ndolores accusamus dolorem eum est voluptatem quisquam tempore\nin voluptas enim voluptatem asperiores voluptatibus\neius quo quos quasi voluptas earum ut necessitatibus"
-    },
-    {
-      "postId": 23,
-      "id": 111,
-      "name": "possimus facilis deleniti nemo atque voluptate",
-      "email": "Stefan.Crist@duane.ca",
-      "body": "ullam autem et\naccusantium quod sequi similique soluta explicabo ipsa\neius ratione quisquam sed et excepturi occaecati pariatur\nmolestiae ut reiciendis eum voluptatem sed"
     }
   ]
 }

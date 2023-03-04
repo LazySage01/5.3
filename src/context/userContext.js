@@ -1,10 +1,11 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, createContext } from "react";
 import axios from "axios";
 
+// Don't mind the name.
+// There were only users at first.
 const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
-  const [users, setUsers] = useState([]);
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -12,45 +13,30 @@ export const UserProvider = ({ children }) => {
   const [phone, setPhone] = useState("");
   const [website, setWebsite] = useState("");
   const [company, setCompany] = useState("");
-  const [tableList, setTableList] = useState([]);
-  const [table, setTable] = useState("users");
+
+  const [table, setTable] = useState("db");
+  const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   const [keys, setKeys] = useState([]);
 
   const baseURL = "http://localhost:3500/";
 
-  //? GET data
-  useEffect(() => {
-    const fetchTables = async () => {
-      try {
-        const URL = baseURL + table;
-        console.log(URL);
-        const response = await axios.get(baseURL + table);
-        const data = response.data;
-        if (response && response.data) setData(data);
-        const object = data[0];
-        setKeys(Object.keys(object));
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchTables();
-  }, [table]);
+  //? GET data { One Fn for Every Fetch}
+  const fetchTables = async (page = 1) => {
+    const response =
+      table === "users"
+        ? await axios.get(baseURL + table)
+        : table === "db"
+        ? await axios.get(baseURL + table)
+        : await axios.get(baseURL + table + "?_page=" + page + "&_limit=" + 20);
 
-  //? GET tableList
-  useEffect(() => {
-    const fetchTableList = async () => {
-      try {
-        const response = await axios.get(baseURL + "tableList");
-        const data = response.data;
-        if (response && response.data) setTableList(data);
-      } catch (err) {
-        console.log(err);
-        throw new Error(err.message);
-      }
-    };
-    fetchTableList();
-  }, []);
+    const responseOne = response.data;
+    const data = table === "db" ? Object.keys(responseOne) : responseOne;
+    const keys = Object.keys(data[0]);
+    setData(data);
+    setKeys(keys);
+    return data;
+  };
 
   //? POST data
   const postUser = async () => {
@@ -67,38 +53,29 @@ export const UserProvider = ({ children }) => {
     };
     const finalData = [...data, newUser];
     setData(finalData);
+    const response = await axios.post(baseURL + table, newUser);
+    if (!response) throw Error("Please reload the app");
+    setName("");
+    setUsername("");
+    setEmail("");
+    setCity("");
+    setPhone("");
+    setWebsite("");
+    setCompany("");
 
-    try {
-      const response = await axios.post(baseURL + table, newUser);
-      if (!response.ok) throw Error("Please reload the app");
-    } catch (err) {
-      throw new Error(err.message);
-    } finally {
-      setName("");
-      setUsername("");
-      setEmail("");
-      setCity("");
-      setPhone("");
-      setWebsite("");
-      setCompany("");
-    }
+    return response.data;
   };
 
   //? DELETE data
   const deleteUser = async (id) => {
-    try {
-      console.log(baseURL + table + "/" + id);
-      await axios.delete(baseURL + table + "/" + id);
-      const updatedUsers = data.filter((user) => user.id !== id);
-      setUsers(updatedUsers);
-    } catch (err) {
-      throw new Error(err.message);
-    }
+    console.log(id);
+    await axios.delete(baseURL + table + "/" + id);
+    const updatedUsers = data.filter((user) => user.id !== id);
+    return updatedUsers;
   };
 
   //? PATCH data
   const editUser = async (id) => {
-    console.log(id);
     const updatedUser = {
       id: id,
       name,
@@ -109,28 +86,21 @@ export const UserProvider = ({ children }) => {
       website,
       company,
     };
-    try {
-      console.log(baseURL + table + "/" + id);
-      const response = await axios.put(baseURL + table + "/" + id, updatedUser);
-      setUsers(
-        data.map((user) => (user.id === id ? { ...response.data } : user))
-      );
-      setName("");
-      setUsername("");
-      setEmail("");
-      setCity("");
-      setPhone("");
-      setWebsite("");
-      setCompany("");
-    } catch (error) {
-      console.log(error.message);
-    }
+    const response = await axios.put(baseURL + table + "/" + id, updatedUser);
+    setName("");
+    setUsername("");
+    setEmail("");
+    setCity("");
+    setPhone("");
+    setWebsite("");
+    setCompany("");
+    return response;
   };
 
   return (
     <UserContext.Provider
       value={{
-        users,
+        keys,
         deleteUser,
         editUser,
         postUser,
@@ -152,8 +122,9 @@ export const UserProvider = ({ children }) => {
         setTable,
         data,
         setData,
-        tableList,
-        keys,
+        fetchTables,
+        page,
+        setPage,
       }}
     >
       {children}
